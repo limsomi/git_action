@@ -17,10 +17,10 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - name: Display Python version
-        run: python -c "import sys; print(sys.version)"
+        run: python -c "import sys; print(sys.version)" > ${{matrix.python-version}}.txt
         
       - name: Save artifact
         uses: actions/upload-artifact@v3
         with:
           name: python-artifact
-          path: my.txt
+          path: ${{matrix.python-version}}.txt
